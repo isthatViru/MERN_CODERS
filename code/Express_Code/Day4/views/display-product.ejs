@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Product Details</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Product Details</h1>
+
+<% if(message){ %>
+<p class="success"><%= message %></p>
+<% } %>
+
+<div class="product-card">
+
+<p><strong>Name:</strong> <%= product.name %></p>
+<p><strong>Price:</strong> ₹ <%= product.price %></p>
+<p><strong>Category:</strong> <%= product.category %></p>
+<p><strong>Description:</strong> <%= product.description %></p>
+
+</div>
+
+<a href="/" class="back-btn">Add Another Product</a>
+
+</div>
+
+</body>
+</html>
