@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Products</title>
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f6fb;
+padding:40px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #ddd;
+text-align:center;
+}
+
+th{
+background:#667eea;
+color:white;
+}
+
+tr:hover{
+background:#f1f1f1;
+}
+
+.delete-btn{
+background:#ff4d4d;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.delete-btn:hover{
+background:#e60000;
+}
+
+.edit{
+margin-left:10px;
+color:#667eea;
+font-size:18px;
+text-decoration:none;
+}
+
+.edit:hover{
+color:#333;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Product List</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Product Name</th>
+<th>Category</th>
+<th>Price</th>
+<th>In Stock</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+<% data.forEach(function(prod){ %>
+
+<tr>
+
+<td><%= prod.ProductName %></td>
+<td><%= prod.Category %></td>
+<td>₹ <%= prod.price %></td>
+<td><%= prod.inStock ? "Available" : "Out of Stock" %></td>
+
+<td>
+
+<form action="/delete/<%= prod._id %>" method="POST" style="display:inline;">
+<button class="delete-btn" onclick="return confirm('Delete this product?')">
+Delete
+</button>
+</form>
+
+<a href="/edit/<%= prod._id %>" class="edit">
+<i class="bi bi-pencil"></i>
+</a>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>
