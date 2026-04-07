@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task List</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#667eea,#764ba2);
+min-height:100vh;
+padding:40px;
+display:flex;
+justify-content:center;
+}
+
+.container{
+width:900px;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+color:#333;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#667eea;
+color:white;
+padding:12px;
+text-align:left;
+}
+
+td{
+padding:12px;
+border-bottom:1px solid #eee;
+}
+
+tr:hover{
+background:#f9f9f9;
+}
+
+.status{
+padding:5px 10px;
+border-radius:6px;
+font-size:13px;
+font-weight:bold;
+}
+
+.completed{
+background:#e6f7ee;
+color:#1a7f37;
+}
+
+.pending{
+background:#fdecea;
+color:#d93025;
+}
+
+.actions{
+display:flex;
+gap:10px;
+}
+
+.btn{
+padding:6px 12px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+font-size:13px;
+text-decoration:none;
+color:white;
+}
+
+.edit{
+background:#3498db;
+}
+
+.edit:hover{
+background:#217dbb;
+}
+
+.delete{
+background:#e74c3c;
+}
+
+.delete:hover{
+background:#c0392b;
+}
+
+.add-btn{
+display:block;
+width:150px;
+margin:0 auto 20px auto;
+text-align:center;
+background:#27ae60;
+padding:10px;
+border-radius:6px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.add-btn:hover{
+background:#1f8c4d;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Task List</h2>
+
+<a href="/" class="add-btn">+ Add Task</a>
+
+<table>
+
+<thead>
+<tr>
+<th>Title</th>
+<th>Status</th>
+<th>Due Date</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody>
+
+<% data.forEach(task => { %>
+
+<tr>
+
+<td><%= task.title %></td>
+
+<td>
+<span class="status <%= task.status ? 'completed' : 'pending' %>">
+<%= task.status ? "Completed" : "Pending" %>
+</span>
+</td>
+
+<td>
+<%= task.dueDate ? task.dueDate.toDateString() : "No Date" %>
+</td>
+
+<td class="actions">
+
+<a href="/edit/<%= task._id %>" class="btn edit">Edit</a>
+
+<a href="/delete/<%= task._id %>" class="btn delete">Delete</a>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add Task</title>
+
+<style>
+body{
+font-family: Arial;
+background:#f2f2f2;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+form{
+background:white;
+padding:20px 30px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+width:300px;
+}
+
+input{
+width:100%;
+padding:8px;
+margin:8px 0;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#4CAF50;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+button:hover{
+background:#45a049;
+}
+</style>
+
+</head>
+<body>
+
+<form action="/add-task" method="POST">
+
+<h3>Add Task</h3>
+
+<label>Title</label>
+<input type="text" name="title" required>
+
+<label>Due Date</label>
+<input type="date" name="dueDate">
+
+<label>
+<input type="checkbox" name="status">
+Completed
+</label>
+
+<br><br>
+
+<button type="submit">Add Task</button>
+
+</form>
+
+</body>
+</html>
