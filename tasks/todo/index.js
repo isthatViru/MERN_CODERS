@@ -2,7 +2,7 @@ const express=require("express");
 const app=express();
 app.set("view engine",'ejs')
 app.use(express.urlencoded({extended:true}))
-const Task=require('../todo/model/taskSchema');
+
 const connection = require("./config/db")
 connection()
 const taskSchema = require("../todo/model/taskSchema");
@@ -37,6 +37,28 @@ app.get("/delete/:id",async (req,res)=>{
     } catch (error) {
         console.log(error)
     }
+})
+
+app.get('/edit/:id',async (req,res)=>{
+  try {
+      const id=req.params.id
+    const result=await taskSchema.findById(id)
+    const data={data:result}
+    res.render("editTask.ejs",data)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+app.post("/editTask/:id",async (req,res)=>{
+  try {
+      const id=req.params.id
+          req.body.status = req.body.status === "on"
+    await taskSchema.findByIdAndUpdate(id,req.body)
+    res.redirect("/viewTask")
+  } catch (error) {
+      console.log(error)
+  }
 })
 
 const PORT=3000;

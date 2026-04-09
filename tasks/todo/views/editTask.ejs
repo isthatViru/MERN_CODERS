@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Add Task</title>
+<title>Update Task</title>
 
 <style>
 
@@ -26,8 +26,8 @@ background:white;
 padding:35px;
 border-radius:12px;
 box-shadow:0 15px 40px rgba(0,0,0,0.2);
-width:350px;
-animation:fadeIn 0.4s ease;
+width:360px;
+animation:fadeIn .4s ease;
 }
 
 h3{
@@ -38,7 +38,7 @@ color:#333;
 
 label{
 display:block;
-margin-top:10px;
+margin-top:12px;
 font-weight:600;
 color:#444;
 }
@@ -58,14 +58,14 @@ input[type="text"]:focus,
 input[type="date"]:focus{
 border-color:#667eea;
 outline:none;
-box-shadow:0 0 0 2px rgba(102,126,234,0.2);
+box-shadow:0 0 0 2px rgba(102,126,234,0.25);
 }
 
 .checkbox{
-margin-top:12px;
 display:flex;
 align-items:center;
 gap:8px;
+margin-top:12px;
 font-weight:500;
 }
 
@@ -73,13 +73,13 @@ button{
 margin-top:20px;
 width:100%;
 padding:12px;
-background:linear-gradient(135deg,#667eea,#5a67d8);
-color:white;
 border:none;
 border-radius:8px;
 font-size:15px;
 cursor:pointer;
-transition:0.3s;
+background:linear-gradient(135deg,#4CAF50,#3e8e41);
+color:white;
+transition:0.25s;
 }
 
 button:hover{
@@ -104,22 +104,23 @@ transform:translateY(0);
 
 <body>
 
-<form action="/add-task" method="POST">
+<form action="/editTask/<%= data._id %>" method="POST">
 
-<h3>Add Task</h3>
+<h3>Update Task</h3>
 
 <label>Title</label>
-<input type="text" name="title" placeholder="Enter task title" required>
+<input type="text" name="title" value="<%= data.title %>" required>
 
 <label>Due Date</label>
-<input type="date" name="dueDate">
+<input type="date" name="dueDate"
+value="<%= data.dueDate ? data.dueDate.toISOString().split('T')[0] : '' %>">
 
 <label class="checkbox">
-<input type="checkbox" name="status">
+<input type="checkbox" name="status" <%= data.status ? "checked" : "" %>>
 Completed
 </label>
 
-<button type="submit">Add Task</button>
+<button type="submit">Update Task</button>
 
 </form>
 
