@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<!-- NAVBAR -->
+<nav class="bg-gray-900 text-white px-8 py-4 flex justify-between items-center">
+<h1 class="text-xl font-bold">Admin Panel</h1>
+
+<a href="/home" class="bg-yellow-400 text-black px-4 py-2 rounded hover:bg-yellow-500">
+Back to Home
+</a>
+</nav>
+
+
+<!-- FORM SECTION -->
+<div class="max-w-xl mx-auto mt-10 bg-white p-8 rounded-xl shadow">
+
+<h2 class="text-2xl font-bold mb-6 text-center">
+Add Slider Product
+</h2>
+
+<form action="/addProduct" method="POST" enctype="multipart/form-data" class="space-y-5">
+
+
+
+<!-- NAME -->
+<div>
+<label class="block font-semibold mb-1">Product Name</label>
+<input type="text" name="name"
+class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+required>
+</div>
+
+<!-- TEXT -->
+<div>
+<label class="block font-semibold mb-1">Description</label>
+<textarea name="text"
+class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+rows="3"></textarea>
+</div>
+
+<!-- IMAGE -->
+<div>
+<label class="block font-semibold mb-1">Upload Slider Images</label>
+<input type="file" name="img" multiple
+class="w-full border rounded-lg px-4 py-2 bg-gray-50">
+</div>
+
+<!-- SUBMIT -->
+<button type="submit"
+class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+Add Product
+</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
