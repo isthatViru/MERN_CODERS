@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+<div class="w-full max-w-sm">
+
+<!-- Login Card -->
+<div class="bg-white border border-gray-300 rounded-lg p-8">
+
+<h1 class="text-3xl font-semibold text-center mb-6 tracking-wide">
+Instagram
+</h1>
+
+<form action="/login" method="POST" class="flex flex-col gap-4">
+
+<input
+type="text"
+name="email"
+placeholder="email"
+class="border border-gray-300 p-2 rounded bg-gray-50 focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-400"
+required
+>
+
+<input
+type="password"
+name="password"
+placeholder="Password"
+class="border border-gray-300 p-2 rounded bg-gray-50 focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-400"
+required
+>
+
+<button
+class="bg-blue-500 text-white py-2 rounded font-semibold hover:bg-blue-600 transition"
+>
+Log In
+</button>
+
+</form>
+
+<!-- Divider -->
+
+<div class="flex items-center gap-3 my-6">
+<div class="flex-1 h-px bg-gray-300"></div>
+<span class="text-sm text-gray-500">OR</span>
+<div class="flex-1 h-px bg-gray-300"></div>
+</div>
+
+<p class="text-center text-sm text-blue-500 cursor-pointer">
+Forgot password?
+</p>
+
+</div>
+
+<!-- Signup Card -->
+
+<div class="bg-white border border-gray-300 rounded-lg mt-4 p-4 text-center">
+<p class="text-sm">
+Don't have an account?
+<a href="/" class="text-blue-500 font-semibold">Sign Up</a>
+</p>
+</div>
+
+</div>
+
+</body>
+</html>
