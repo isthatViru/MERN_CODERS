@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bcrypt = require("bcrypt");
 const session = require("express-session");
+const GmailOtp = require("./GmailOTP.js");
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +22,6 @@ app.use(
     secret: "viraj",
   })
 );
-
 
 // ================== SIGNUP ==================
 
@@ -48,24 +48,30 @@ app.post("/signup", async (req, res) => {
     let otp = Math.floor(1000 + Math.random() * 9000);
     req.session.OTP = otp;
 
-    res.send(`<script>alert('Your OTP is ${otp}'); window.location.assign('/otppage')</script>`);
+    // ✅ FIX: ensure function is called correctly
+    GmailOtp(email, otp);
+
+    res.send(`<script>alert('OTP has been sent to your email adress'); window.location.assign('/otppage')</script>`);
 
   } catch (error) {
     console.log(error);
+    res.send("Something went wrong");
   }
 });
-
 
 // OTP page
 app.get("/otppage", (req, res) => {
   res.render("otppage.ejs");
 });
 
-
 // verify signup OTP
 app.post("/verifyotp", async (req, res) => {
   try {
-    let userotp = req.body.userotp.join("");
+    // ✅ FIX: handle case if userotp is not array
+    let userotp = Array.isArray(req.body.userotp)
+      ? req.body.userotp.join("")
+      : req.body.userotp;
+
     let actualOTP = req.session.OTP;
 
     if (userotp === String(actualOTP)) {
@@ -93,16 +99,15 @@ app.post("/verifyotp", async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    res.send("Something went wrong");
   }
 });
-
 
 // ================== LOGIN ==================
 
 app.get("/login", (req, res) => {
   res.render("login.ejs");
 });
-
 
 // Step 1: check password + send OTP
 app.post("/login", async (req, res) => {
@@ -127,24 +132,30 @@ app.post("/login", async (req, res) => {
     let otp = Math.floor(1000 + Math.random() * 9000);
     req.session.LOGINOTP = otp;
 
-    res.send(`<script>alert('Your OTP is ${otp}'); window.location.assign('/login-otp')</script>`);
+    // ✅ FIX: send OTP via function instead of only alert (function already exists)
+    GmailOtp(user.email, otp);
+
+    res.send(`<script>alert('OTP has been sent to your email'); window.location.assign('/login-otp')</script>`);
 
   } catch (error) {
     console.log(error);
+    res.send("Something went wrong");
   }
 });
-
 
 // OTP page for login
 app.get("/login-otp", (req, res) => {
   res.render("Loginotp.ejs");
 });
 
-
 // Step 2: verify login OTP
 app.post("/verifyLoginotp", async (req, res) => {
   try {
-    let userotp = req.body.userotp2.join("");
+    // ✅ FIX: handle both array and string input
+    let userotp = Array.isArray(req.body.userotp2)
+      ? req.body.userotp2.join("")
+      : req.body.userotp2;
+
     let actualOTP = req.session.LOGINOTP;
 
     if (userotp === String(actualOTP)) {
@@ -164,9 +175,9 @@ app.post("/verifyLoginotp", async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    res.send("Something went wrong");
   }
 });
-
 
 // ================== HOME ==================
 
@@ -177,7 +188,6 @@ app.get("/home", (req, res) => {
     res.redirect("/");
   }
 });
-
 
 // ================== SERVER ==================
 
