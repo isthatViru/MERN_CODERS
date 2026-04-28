@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Clone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white">
+
+  <!-- Navbar -->
+  <div class="fixed top-0 w-full bg-black border-b border-gray-800 flex items-center justify-between px-6 py-3">
+    <h1 class="text-xl font-bold">Instagram</h1>
+    <div class="flex gap-4">
+      <input type="text" placeholder="Search" class="bg-gray-800 px-3 py-1 rounded text-sm">
+      <span>❤️</span>
+      <span>💬</span>
+    </div>
+  </div>
+
+  <div class="flex pt-16 max-w-6xl mx-auto">
+
+    <!-- Feed -->
+    <div class="w-2/3 px-4">
+
+      <!-- Story Section -->
+      <div class="flex gap-4 overflow-x-auto py-4">
+        <div class="text-center">
+          <img src="https://via.placeholder.com/60" class="rounded-full border-2 border-pink-500">
+          <p class="text-xs">user1</p>
+        </div>
+        <div class="text-center">
+          <img src="https://via.placeholder.com/60" class="rounded-full border-2 border-pink-500">
+          <p class="text-xs">user2</p>
+        </div>
+        <div class="text-center">
+          <img src="https://via.placeholder.com/60" class="rounded-full border-2 border-pink-500">
+          <p class="text-xs">user3</p>
+        </div>
+      </div>
+
+      <!-- Post -->
+      <div class="bg-black border border-gray-800 rounded mb-6">
+        <div class="flex items-center gap-3 p-3">
+          <img src="https://via.placeholder.com/40" class="rounded-full">
+          <span class="font-semibold">username</span>
+        </div>
+        <img src="https://via.placeholder.com/500" class="w-full">
+        <div class="p-3">
+          <div class="flex gap-4 text-xl">
+            <span>❤️</span>
+            <span>💬</span>
+            <span>📤</span>
+          </div>
+          <p class="mt-2 text-sm"><span class="font-semibold">username</span> This is a caption...</p>
+        </div>
+      </div>
+
+      <!-- Another Post -->
+      <div class="bg-black border border-gray-800 rounded mb-6">
+        <div class="flex items-center gap-3 p-3">
+          <img src="https://via.placeholder.com/40" class="rounded-full">
+          <span class="font-semibold">another_user</span>
+        </div>
+        <img src="https://via.placeholder.com/500" class="w-full">
+        <div class="p-3">
+          <div class="flex gap-4 text-xl">
+            <span>❤️</span>
+            <span>💬</span>
+            <span>📤</span>
+          </div>
+          <p class="mt-2 text-sm"><span class="font-semibold">another_user</span> Another post caption...</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div class="w-1/3 hidden lg:block px-4">
+      <div class="flex items-center gap-3 mb-6">
+        <img src="https://via.placeholder.com/50" class="rounded-full">
+        <div>
+          <p class="font-semibold">your_username</p>
+          <p class="text-gray-400 text-sm">Your Name</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-gray-400 mb-3">Suggestions for you</p>
+        <div class="flex justify-between items-center mb-3">
+          <div class="flex gap-3 items-center">
+            <img src="https://via.placeholder.com/40" class="rounded-full">
+            <span>suggestion1</span>
+          </div>
+          <button class="text-blue-500 text-sm">Follow</button>
+        </div>
+        <div class="flex justify-between items-center">
+          <div class="flex gap-3 items-center">
+            <img src="https://via.placeholder.com/40" class="rounded-full">
+            <span>suggestion2</span>
+          </div>
+          <button class="text-blue-500 text-sm">Follow</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
