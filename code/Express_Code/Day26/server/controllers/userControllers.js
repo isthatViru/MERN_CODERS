@@ -51,7 +51,7 @@ const getuser = async (req, res) => {
 
 const addUsers = async (req, res) => {
   try {
-    const { userName, email, password } = req.body
+    const { userName, email,role, password } = req.body
 
     if (!userName || !email || !password) {
       return res.status(400).json({
@@ -76,6 +76,7 @@ const addUsers = async (req, res) => {
     const result = new userSchema({
       userName,
       email,
+      role,
       password: hashpassword
     })
 
@@ -138,7 +139,7 @@ const updateUser = async (req, res) => {
 
     const result = await userSchema.findByIdAndUpdate(
       id,
-      { userName, email, password: hashpassword },
+      { userName, email,role ,password: hashpassword },
       { new: true }
     )
 

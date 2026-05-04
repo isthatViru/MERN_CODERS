@@ -20,6 +20,10 @@ connection()
 const userRoutes = require("./Routes/userRoutes")
 app.use('/', userRoutes)
 
+const authRoutes = require("./Routes/authRoutes")
+app.use('/api', authRoutes)
+
+
 const PORT = 3000
 const HOST = "127.0.0.1"
 
